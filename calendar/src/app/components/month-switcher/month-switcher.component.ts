@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { DateService } from "../../services/date.service";
 
 @Component({
   selector: 'app-month-switcher',
   templateUrl: './month-switcher.component.html',
   styleUrls: ['./month-switcher.component.css']
 })
-export class MonthSwitcherComponent implements OnInit {
+export class MonthSwitcherComponent {
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor( private dateService: DateService) {
   }
 
   // get date from service and displaying to the template
 
-  // switchMonth(direction: number) {}
+  switchMonth(direction: number) {
+    this.dateService.switchMonth(direction);
+  }
 
 }
+
+

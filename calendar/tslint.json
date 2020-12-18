@@ -2,7 +2,7 @@
   "extends": "tslint:recommended",
   "rules": {
     "array-type": false,
-    "arrow-parens": false,
+    "arrow-parents": false,
     "deprecation": {
       "severity": "warning"
     },
