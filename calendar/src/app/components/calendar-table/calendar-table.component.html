@@ -15,27 +15,27 @@
                     </tr>
                   </thead>
     <tbody check that teamEntity is exist>
-    <tr get team of teamEntities>
-      <div class="calendar__row-inner">
-    <tr>
-      <td
-        get day of monthsDay entity
-      ></td>
-      <td>
-        <span class="calendar__text calendar__text&#45;&#45;increased"></span>
-      </td>
-    </tr>
-    <tr get participant of team participants>
-      <td
-        get day of month days
-        use isDayOff
-      ></td>
-      <td>
-        <span class="calendar__text calendar__text&#45;&#45;increased">0</span>
-      </td>
-    </tr>
-    </div>
-    </tr>
+        <tr get team of teamEntities>
+          <div class="calendar__row-inner">
+              <tr>
+                <td
+                  get day of monthsDay entity
+                ></td>
+                <td>
+                  <span class="calendar__text calendar__text&#45;&#45;increased"></span>
+                </td>
+              </tr>
+              <tr get participant of team participants>
+                <td
+                  get day of month days
+                  use isDayOff
+                ></td>
+                <td>
+                  <span class="calendar__text calendar__text&#45;&#45;increased">0</span>
+                </td>
+              </tr>
+            </div>
+        </tr>
     </tbody>
   </table>
 </section> -->
@@ -52,13 +52,45 @@
         <td *ngFor='let day of days; index as i;' [ngClass]='{
           weekend: day.isDayOff
         }'>
-          <div>{{i+1}}</div>
           <div>{{day.dayOfWeek}}</div>
+          <div>{{i+1}}</div>
         </td>
         <td>
           Sum
         </td>
       </tr>
     </thead>
+    <tbody>
+      <tr class="mainRow">
+        <td class="teamInfo">
+          <div class="teamInfo__wrapper">
+            <p class="teamInfo__name">frontend</p>
+            <div class="teamInfo__block"> 
+              <i class="fas fa-users"></i>
+              <span>5</span >
+              <div class="percent">
+              12%
+              </div>
+              <button>
+                <i class="fas chevronBtn fa-chevron-up"></i>
+              </button>
+            </div >
+          </div >
+        </td>
+        <td  *ngFor='let day of days; index as i;' [ngClass]='{
+          teamInfo: teamInfo,
+          weekend: day.isDayOff
+        }'></td>
+        <td class="teamInfo"></td>
+      </tr>
+      <tr class="employerRow">
+        <td class="nameCell">employer</td>
+        <td *ngFor='let day of days; index as i' [ngClass]='{
+          dayCell:dayCell,
+          weekend: day.isDayOff
+        }'></td>
+        <td class="sumOfDaysOff">0</td>
+      </tr>
+    </tbody>
   </table>
 </section>
