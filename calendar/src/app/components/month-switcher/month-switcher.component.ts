@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DateService } from "../../services/date.service";
 
 @Component({
@@ -7,7 +7,7 @@ import { DateService } from "../../services/date.service";
   styleUrls: ['./month-switcher.component.css']
 })
 export class MonthSwitcherComponent {
-
+  //@Output() onMonthChange: EventEmitter<moment.Moment> = new EventEmitter<moment.Moment>()
   constructor( private dateService: DateService) {
   }
 
@@ -15,6 +15,7 @@ export class MonthSwitcherComponent {
 
   switchMonth(direction: number) {
     this.dateService.switchMonth(direction);
+    //this.onMonthChange.emit(this.dateService.currentDate.value);
   }
 
 }

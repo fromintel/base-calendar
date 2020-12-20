@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { Team } from 'src/app/models/team';
+import * as moment from "moment";
+import { DateService } from 'src/app/services/date.service';
+import { Day } from 'src/app/models/day';
 @Component({
   selector: 'app-calendar-table',
   templateUrl: './calendar-table.component.html',
@@ -8,8 +11,36 @@ import { Component, OnInit } from '@angular/core';
 export class CalendarTableComponent implements OnInit {
 
   // private teams: { [key in UserRealm]?: Team } = {};
+  //@Input() currentDate: moment.Moment
+  days:Day[]=[];
+  teams:Team[]=[];
+  daysInMonth:number;
+  currentDate:string;
+  //daysInMonth:number = moment(this.currentDate, "YYYY-MM").daysInMonth();
+  constructor( private dateService: DateService) { 
+    this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
+    this.currentDate = this.dateService.currentDate.value.subtract(this.dateService.currentDate.value.date()-1, 'days').format('YYYY-MM-DD');
+    this.generateHeaderArray();
+    this.dateService.switchMonth$.subscribe((date)=>{
+      this.daysInMonth=date.value.daysInMonth();
+      this.currentDate=date.value.format('YYYY-MM-DD');
+      this.generateHeaderArray();
+    });
+  }
 
-  constructor() { }
+generateHeaderArray(){
+  for(let index = 0 ; index<this.daysInMonth; index++){
+    this.days.length=this.daysInMonth;
+    let curDate = moment(this.currentDate).add(index,'days').format('ddd');
+    let curFullDate = moment(this.currentDate).add(index,'days').format('YYYY-MM-DD');
+    this.days[index] = {
+      date: new Date(curFullDate),
+      isDayOff: (curDate==='Sat')? true:(curDate==='Sun')?true:false,
+      dayOfWeek: curDate
+    };
+    console.log(this.days[index]);
+  }
+}
 
   ngOnInit() {
     // you need to get users
@@ -28,6 +59,8 @@ export class CalendarTableComponent implements OnInit {
     * */
     // for now you should be have a teams
   }
+  
+  
 
   // get teamsEntity(): Team[] {}
 
