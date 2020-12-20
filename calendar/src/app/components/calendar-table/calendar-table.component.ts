@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DateService} from '../../services/date.service';
 
 @Component({
   selector: 'app-calendar-table',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendar-table.component.css']
 })
 export class CalendarTableComponent implements OnInit {
+  Arr=Array;
+  currentDate: Date;
+  daysAmount: number;
 
   // private teams: { [key in UserRealm]?: Team } = {};
 
-  constructor() { }
+  constructor(private dateFormat:DateService) { 
+    this.currentDate = new Date();
+    this.daysAmount = this.dateFormat.getDaysAmount();
+  }
+  changeDate(){
+
+  }
+  getDayName(dayIndex:number):string{
+    return this.dateFormat.getDayName(dayIndex);
+  }
+  getDaysAmount(){
+    return this.dateFormat.getDaysAmount();
+  }
 
   ngOnInit() {
     // you need to get users
@@ -36,5 +52,7 @@ export class CalendarTableComponent implements OnInit {
   // generateMonth(date: Date): Month {} // should to get month
 
   // you can create the structure yourself too
+  ngOnDestroy():void{
+  }
 
 }
