@@ -1,4 +1,4 @@
-import { User, UserRealm } from './user';
+import { User, UserRealm } from "./user";
 
 export interface Team {
   realm: UserRealm;

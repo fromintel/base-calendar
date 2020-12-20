@@ -21,6 +21,7 @@ export class CalendarTableComponent implements OnInit {
   currentDate: string;
   //daysInMonth:number = moment(this.currentDate, "YYYY-MM").daysInMonth();
   constructor(private dateService: DateService) {
+    
     this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
     this.currentDate = this.dateService.currentDate.value
       .subtract(this.dateService.currentDate.value.date() - 1, "days")
@@ -57,7 +58,6 @@ export class CalendarTableComponent implements OnInit {
       // realm: user.realm,
       // participants: [],
     };
-    console.log(this.teams);
 
     //and then add users to teams, such as
     /*

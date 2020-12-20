@@ -4,4 +4,3 @@ export interface Vacation {
   endDate: string;
   userId: number;
 }
-
