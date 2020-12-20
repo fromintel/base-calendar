@@ -5,6 +5,7 @@ import { Day } from "src/app/models/day";
 import { Team } from "src/app/models/team";
 import { UserRealm, User } from "src/app/models/user";
 import { UserService } from "../../services/user.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-calendar-table",
@@ -16,12 +17,14 @@ export class CalendarTableComponent implements OnInit {
 
   //@Input() currentDate: moment.Moment
   days: Day[] = [];
-  // teams:Team[]=[];
+  teamInfo: any;
   daysInMonth: number;
   currentDate: string;
   //daysInMonth:number = moment(this.currentDate, "YYYY-MM").daysInMonth();
-  constructor(private dateService: DateService) {
-    
+  constructor(
+    private dateService: DateService,
+    private userService: UserService,
+  ) {
     this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
     this.currentDate = this.dateService.currentDate.value
       .subtract(this.dateService.currentDate.value.date() - 1, "days")
@@ -46,18 +49,23 @@ export class CalendarTableComponent implements OnInit {
         isDayOff: curDate === "Sat" ? true : curDate === "Sun" ? true : false,
         dayOfWeek: curDate,
       };
-      // console.log(this.days[index]);
     }
   }
 
   ngOnInit() {
     // you need to get users
-    // then construct your team by getting users, such as
+    const subTeamInfo: Subscription = this.userService
+      .getUsers()
+      .subscribe((team) => {
+        this.teams = {
 
-    this.teams = {
-      // realm: user.realm,
-      // participants: [],
-    };
+        };
+        console.log(team[0].realm);
+        console.log(team[0].members);
+        console.log(team[0].percentageOfAbsent);
+      });
+
+    // then construct your team by getting users, such as
 
     //and then add users to teams, such as
     /*

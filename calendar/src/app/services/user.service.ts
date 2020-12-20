@@ -1,13 +1,18 @@
-import { Observable } from 'rxjs';
-import {ITeams} from '../models/IDepartment-teams';
+import { Injectable } from "@angular/core";
+import { BehaviorSubject } from 'rxjs';
 import {User, UserRealm} from '../models/user'
+import {Team} from '../models/team'
 
+@Injectable({
+  providedIn: "root",
+})
 export class UserService {
   // private users: Users[] = [ ...mock data ]
+  teamInfo: BehaviorSubject<Team[]>;
 
-  public teams: ITeams[] = [
+  private teams: Team[] = [
       {
-        name: "Frontend Team",
+        realm: UserRealm.FRONT_END,
         percentageOfAbsent: [0, 2, 0, 0, 1, 22, 2, 2, 2, 2, 11, 1],
         members: [
           {
@@ -35,7 +40,7 @@ export class UserService {
         ],
       },
       {
-        name: "Design Team",
+        realm: UserRealm.DESIGNER,
         percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
         members: [
           {
@@ -63,7 +68,7 @@ export class UserService {
         ],
       },
       {
-        name: "Backend Team",
+        realm: UserRealm.BACK_END,
         percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
         members: [
           {
@@ -91,7 +96,7 @@ export class UserService {
         ],
       },
       {
-        name: "Managers Team",
+        realm: UserRealm.MANAGER,
         percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
         members: [
           {
@@ -120,7 +125,11 @@ export class UserService {
       },
     ]
 
-  // getUsers(): Observable<User[]> {}
+  getUsers(): BehaviorSubject<Team[]> {
+    this.teamInfo = new BehaviorSubject(this.teams);
+    this.teamInfo.next(this.teams)
+    return this.teamInfo;
+  }
 
   // getUserById(): Observable<User>
 }
