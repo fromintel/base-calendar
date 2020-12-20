@@ -13,7 +13,8 @@ td p {
 }
 
 .button-wrap {
-    width: 200px;
+    /* width: 200px; */
+    margin: 0 auto;
 }
 
 .button-inner {
