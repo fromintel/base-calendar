@@ -2,8 +2,8 @@ import {IDepartment} from '../models/IDepartment-teams';
 
 export class UserService {
   // private users: Users[] = [ ...mock data ]
-  private users: IDepartment = {
-    teams: [
+
+  private users: IDepartment = [
       {
         name: "Frontend Team",
         percentageOfAbsent: [0, 2, 0, 0, 1, 22, 2, 2, 2, 2, 11, 1],
@@ -84,9 +84,7 @@ export class UserService {
           },
         ],
       },
-    ],
-  };
-
+    ]
 
   // getUsers(): Observable<User[]> {}
 

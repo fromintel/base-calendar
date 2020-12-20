@@ -1,7 +1,6 @@
 export interface IDepartment {
   teams: ITeams[];
 }
-
 interface ITeams {
   readonly members: IMembers[];
   readonly name: string;
