@@ -1,39 +1,60 @@
-<!--<section class="calendar">-->
-<!--  <table class="calendar__table">-->
-<!--    <thead>-->
-<!--      <tr>-->
-<!--        <td-->
-<!--          get gey of daysEntity-->
-<!--        >-->
-<!--&lt;!&ndash;          some data of day &ndash;&gt;-->
-<!--        </td>-->
-<!--        <td>-->
-<!--          <span class="calendar__text">Sum</span>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--    </thead>-->
-<!--    <tbody check that teamEntity is exist>-->
-<!--    <tr get team of teamEntities>-->
-<!--      <div class="calendar__row-inner">-->
-<!--    <tr>-->
-<!--      <td-->
-<!--        get day of monthsDay entity-->
-<!--      ></td>-->
-<!--      <td>-->
-<!--        <span class="calendar__text calendar__text&#45;&#45;increased"></span>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    <tr get participant of team participants>-->
-<!--      <td-->
-<!--        get day of month days-->
-<!--        use isDayOff-->
-<!--      ></td>-->
-<!--      <td>-->
-<!--        <span class="calendar__text calendar__text&#45;&#45;increased">0</span>-->
-<!--      </td>-->
-<!--    </tr>-->
-<!--    </div>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--  </table>-->
-<!--</section>-->
+<section class="calendar">
+    <table class="calendar__table">
+        <thead>
+            <tr>
+                <td class="button-wrap">
+                    <button class="button-inner">Add Vacation</button>
+                </td>
+                <ng-container *ngFor="let i of Arr(this.getDaysAmount());index as index">
+                    <td class="weekend" *ngIf="this.getDayName(index+1) == 'St' || this.getDayName(index+1) == 'Sn';else elseblock">
+                        <p>
+                            {{this.getDayName(index+1)}}
+                        </p>
+                        <p>
+                            {{index+1}}
+                        </p>
+                    </td>
+                    <ng-template #elseblock>
+                        <td>
+                            <p>
+                                {{this.getDayName(index+1)}}
+                            </p>
+                            <p>
+                                {{index+1}}
+                            </p>
+                        </td>
+                    </ng-template>
+                </ng-container>
+                <!--td get gey of daysEntity>
+                    &lt;!&ndash; some data of day &ndash;&gt;
+                </!--td-->
+                <td>
+                    <span class="calendar__text">Sum</span>
+                </td>
+            </tr>
+        </thead>
+        <!--    <tbody check that teamEntity is exist>-->
+        <!--    <tr get team of teamEntities>-->
+        <!--      <div class="calendar__row-inner">-->
+        <!--    <tr>-->
+        <!--      <td-->
+        <!--        get day of monthsDay entity-->
+        <!--      ></td>-->
+        <!--      <td>-->
+        <!--        <span class="calendar__text calendar__text&#45;&#45;increased"></span>-->
+        <!--      </td>-->
+        <!--    </tr>-->
+        <!--    <tr get participant of team participants>-->
+        <!--      <td-->
+        <!--        get day of month days-->
+        <!--        use isDayOff-->
+        <!--      ></td>-->
+        <!--      <td>-->
+        <!--        <span class="calendar__text calendar__text&#45;&#45;increased">0</span>-->
+        <!--      </td>-->
+        <!--    </tr>-->
+        <!--    </div>-->
+        <!--    </tr>-->
+        <!--    </tbody>-->
+        <!--  </table>-->
+        <!--</section>-->
