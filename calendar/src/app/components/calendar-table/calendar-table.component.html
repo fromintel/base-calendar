@@ -60,11 +60,11 @@
         </td>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let item of teams | keyvalue">
       <tr class="mainRow">
         <td class="teamInfo">
           <div class="teamInfo__wrapper">
-            <p class="teamInfo__name">frontend</p>
+            <p class="teamInfo__name">{{item.key}}</p>
             <div class="teamInfo__block"> 
               <i class="fas fa-users"></i>
               <span>5</span >
@@ -72,7 +72,7 @@
               12%
               </div>
               <button>
-                <i class="fas chevronBtn fa-chevron-up"></i>
+                <i class="fas chevronBtn fa-chevron-up"></i> 
               </button>
             </div >
           </div >
@@ -83,10 +83,9 @@
         }'></td>
         <td class="teamInfo"></td>
       </tr>
-      <tr class="employerRow">
-        <td class="nameCell">employer</td>
-        <td *ngFor='let day of days; index as i' [ngClass]='{
-          dayCell:dayCell,
+      <tr class="employeeRow" *ngFor="let element of item.value.members">
+        <td class="nameCell" >{{element.name}}</td>
+        <td class="dayCell" *ngFor='let day of days; index as i' [ngClass]='{
           weekend: day.isDayOff
         }'></td>
         <td class="sumOfDaysOff">0</td>

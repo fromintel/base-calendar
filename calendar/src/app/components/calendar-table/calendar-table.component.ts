@@ -57,12 +57,19 @@ export class CalendarTableComponent implements OnInit {
     const subTeamInfo: Subscription = this.userService
       .getUsers()
       .subscribe((team) => {
-        this.teams = {
-
-        };
+        for (let elem in team){
+          console.log(team[elem]);
+          this.teams[team[elem].realm] = {
+            realm: team[elem].realm,
+            percentageOfAbsent:team[elem].percentageOfAbsent,
+            members: team[elem].members
+          };
+        }
+        console.log(this.teams)
+        /* console.log(team[0])
         console.log(team[0].realm);
         console.log(team[0].members);
-        console.log(team[0].percentageOfAbsent);
+        console.log(team[0].percentageOfAbsent); */
       });
 
     // then construct your team by getting users, such as
