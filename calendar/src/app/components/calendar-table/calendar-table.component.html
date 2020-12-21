@@ -1,95 +1,66 @@
-
-
-              <!-- <section class="calendar">
-                <table class="calendar__table">
-                  <thead>
-                    <tr>
-                      <td
-                        get day of daysEntity
-                      >
-              &lt;!&ndash;          some data of day &ndash;&gt;
-                      </td>
-                      <td>
-                        <span class="calendar__text">Sum</span>
-                      </td>
-                    </tr>
-                  </thead>
-    <tbody check that teamEntity is exist>
-        <tr get team of teamEntities>
-          <div class="calendar__row-inner">
-              <tr>
-                <td
-                  get day of monthsDay entity
-                ></td>
-                <td>
-                  <span class="calendar__text calendar__text&#45;&#45;increased"></span>
-                </td>
-              </tr>
-              <tr get participant of team participants>
-                <td
-                  get day of month days
-                  use isDayOff
-                ></td>
-                <td>
-                  <span class="calendar__text calendar__text&#45;&#45;increased">0</span>
-                </td>
-              </tr>
-            </div>
-        </tr>
-    </tbody>
-  </table>
-</section> -->
-
-
-
 <section class="calendar">
   <table class="calendar__table">
     <thead>
       <tr>
-        <td>
-          <button class="calendar__button">Add vacation</button>
+        <td class="addVacationCell">
+          <button class="addVacationBtn">
+            <span>+</span>
+            Add vacation
+          </button>
         </td>
-        <td *ngFor='let day of days; index as i;' [ngClass]='{
-          weekend: day.isDayOff
-        }'>
-          <div>{{day.dayOfWeek}}</div>
-          <div>{{i+1}}</div>
+        <td
+          class="outputItem"
+          *ngFor="let day of days; index as i"
+          [ngClass]="{
+            weekend: day.isDayOff
+          }">
+          <span class="outputDay">{{ day.dayOfWeek.slice(0, 2) }}</span>
+          <span class="outputDate">{{ i + 1 }}</span>
         </td>
-        <td>
-          Sum
-        </td>
+        <td class="outputItem sumCell weekend">Sum</td>
       </tr>
     </thead>
-    <tbody *ngFor="let item of teams | keyvalue">
+    <tbody
+      *ngFor="let item of teams | keyvalue"
+      [ngClass]="item.key.split(' ').join('')"
+    >
       <tr class="mainRow">
         <td class="teamInfo">
           <div class="teamInfo__wrapper">
-            <p class="teamInfo__name">{{item.key}}</p>
-            <div class="teamInfo__block"> 
+            <p class="teamInfo__name">{{ item.key }}</p>
+            <div class="teamInfo__block">
               <i class="fas fa-users"></i>
-              <span>5</span >
-              <div class="percent">
-              12%
-              </div>
-              <button>
-                <i class="fas chevronBtn fa-chevron-up"></i> 
+              <span>{{item.value.members.length}}</span>
+              <div class="percent">{{item.value.percentageOfAbsent[1]}}%</div>
+              <button (click)="hidden = !hidden">
+                <i class="fas chevronBtn fa-chevron-up"></i>
               </button>
-            </div >
-          </div >
+            </div>
+          </div>
         </td>
-        <td  *ngFor='let day of days; index as i;' [ngClass]='{
-          teamInfo: teamInfo,
-          weekend: day.isDayOff
-        }'></td>
+        <td
+          class="teamInfo"
+          *ngFor="let day of days; index as i"
+        ></td>
         <td class="teamInfo"></td>
       </tr>
-      <tr class="employeeRow" *ngFor="let element of item.value.members">
-        <td class="nameCell" >{{element.name}}</td>
-        <td class="dayCell" *ngFor='let day of days; index as i' [ngClass]='{
-          weekend: day.isDayOff
-        }'></td>
+      <tr
+        class="employeeRow"
+        *ngFor="let element of item.value.members"
+        [class.hidden]="hidden"
+      >
+        <td class="nameCell">{{ element.name }}</td>
+        <td
+          class="dayCell"
+          *ngFor="let day of days; index as i"
+          [ngClass]="{
+            weekend: day.isDayOff
+          }"
+        ></td>
         <td class="sumOfDaysOff">0</td>
       </tr>
     </tbody>
   </table>
 </section>
+
+

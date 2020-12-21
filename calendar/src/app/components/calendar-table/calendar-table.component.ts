@@ -17,9 +17,11 @@ export class CalendarTableComponent implements OnInit {
 
   //@Input() currentDate: moment.Moment
   days: Day[] = [];
+  user: User[] = []
   teamInfo: any;
   daysInMonth: number;
   currentDate: string;
+  hidden: boolean = false;
   //daysInMonth:number = moment(this.currentDate, "YYYY-MM").daysInMonth();
   constructor(
     private dateService: DateService,
@@ -54,25 +56,18 @@ export class CalendarTableComponent implements OnInit {
 
   ngOnInit() {
     // you need to get users
+    // then construct your team by getting users, such as
     const subTeamInfo: Subscription = this.userService
       .getUsers()
       .subscribe((team) => {
-        for (let elem in team){
-          console.log(team[elem]);
+        for (let elem in team) {
           this.teams[team[elem].realm] = {
             realm: team[elem].realm,
-            percentageOfAbsent:team[elem].percentageOfAbsent,
-            members: team[elem].members
+            percentageOfAbsent: team[elem].percentageOfAbsent,
+            members: team[elem].members,
           };
         }
-        console.log(this.teams)
-        /* console.log(team[0])
-        console.log(team[0].realm);
-        console.log(team[0].members);
-        console.log(team[0].percentageOfAbsent); */
       });
-
-    // then construct your team by getting users, such as
 
     //and then add users to teams, such as
     /*
@@ -91,3 +86,23 @@ export class CalendarTableComponent implements OnInit {
 
   // you can create the structure yourself too
 }
+
+// toggle(event) {
+  // const teamNode: HTMLElement[] = event.target.closest("tbody").children;
+  // const teamArray = [...teamNode];
+  // teamArray.forEach((member, index) => {
+  //   if (index > 0) {
+  //     console.log(member)
+
+  //     if (member.className === "hidden") {
+
+  //       console.log("remove");
+  //       member.classList.remove("hidden");
+  //     }
+  //     if(member.className !== "hidden") {
+  //       console.log("add")
+  //       member.classList.add("hidden");
+  //     }
+  //   }
+  // });
+// }

@@ -1,0 +1,401 @@
+/* comon styles  */
+
+.calendar__table{
+  max-width: 1345px;
+  border-collapse: collapse;
+}
+thead{
+  display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+/* button styles */
+
+.addVacationBtn {
+  width: 144px;
+  height: 40px;
+  background: var(--btn-bg);
+  border-radius: 7px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addVacationBtn span {
+  font-size: 24px;
+  padding-right: 10px;
+}
+.addVacationCell {
+  max-width: fit-content;
+  padding: 0 119px 24px 0;
+  margin: 0;
+  border-top: none;
+  border-left: none;
+}
+
+/* thead cells styles */
+
+.outputItem {
+  height: 64px;
+  width: 34px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  line-height: 28px;
+  border: 1px solid rgb(192, 192, 192);
+}
+.outputDay {
+  display: inline-block;
+  padding: 7px;
+  text-align: center;
+  color: #000;
+  font-size: 12px;
+  line-height: 18px;
+}
+.outputDate {
+  display: inline-block;
+  text-align: center;
+  color: #000;
+  font-size: 14;
+  font-weight: 600;
+  line-height: 21px;
+}
+.sumCell {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* tbody styles */
+tbody tr {
+  height: 33px;
+}
+tbody:after {
+  height: 33px;
+  display: table-row;
+  content: '';
+}
+
+/* mainRow styles */
+.mainRow::last-child {
+  background: var(--main-row);
+}
+.teamInfo {
+  padding: 5px 10px 6px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+}
+.teamInfo span {
+  color: #949494;
+  font-size: 12px;
+  line-height: 18px;
+}
+.teamInfo__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.teamInfo__name {
+  width: 200px;
+  padding: 0px 10px;
+}
+.teamInfo__block {
+  flex: 0 0 auto;
+  width: fit-content;
+}
+.teamInfo__block .fas {
+  margin-top: 0px;
+  padding: 5px;
+}
+.teamInfo__block .chevronBtn {
+  font-size: 10px;
+}
+.teamInfo__block button{
+  background-color: transparent;
+}
+
+
+
+.monthBlock {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0px 5px;
+  width: 300px;
+}
+
+.navBtn {
+  background-color: transparent;
+}
+
+.chosenMonth {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  margin: 25px 0px;
+  padding: 0 40px;
+}
+
+
+
+
+
+
+
+.nameCell {
+  padding: 9px 20px 7px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.dayCell {
+  text-align: center;
+}
+
+.dayCellOfMainRow {
+  background: var(--teamHeader-bg);
+}
+
+td.sumOfDaysOff {
+  text-align: center;
+  font-size: 14px;
+  line-height: 21px;
+  background: var(--main-row);
+}
+
+/* hidden classes */
+
+/* .hideTable {
+  height: 0px;
+  display: block;
+  overflow: hidden;
+}
+
+.hiddenEmployees {
+  transform: rotateX(180deg);
+} */
+
+
+
+.chevronBtn {
+  font-size: 10px;
+  padding: 0 10px;
+  padding-top: 10px;
+}
+
+.infoWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navBtn {
+  padding: 0 10px 5px 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+.FrontendTeam .mainRow td {
+  background: var(--teamHeader-bg);
+}
+.DesignTeam .mainRow td {
+  background: rgba(122, 175, 255, 0.1);
+}
+.BackendTeam .mainRow td {
+  background: rgba(255, 153, 153, 0.1);
+}
+.ManagersTeam .mainRow td {
+  background: rgba(255, 167, 104, 0.1);
+}
+
+.FrontendTeam .percent {
+  background: var(--front-color);
+}
+.DesignTeam .percent {
+  background: var(--designer-color);
+}
+.BackendTeam .percent {
+  background: var(--backend-color);
+}
+.ManagersTeam .percent {
+  background: var(--manager-color);
+}
+
+.FrontendTeam .employeeRow,
+.FrontendTeam .mainRow{
+    border-left: 3px solid var(--front-color);
+}
+.DesignTeam .employeeRow,
+.DesignTeam .mainRow{
+    border-left: 3px solid var(--designer-color);
+}
+.BackendTeam .employeeRow,
+.BackendTeam .mainRow {
+    border-left: 3px solid var(--backend-color);
+}
+.ManagersTeam .employeeRow,
+.ManagersTeam .mainRow {
+    border-left: 3px solid var(--manager-color);
+}
+
+
+.dayCell {
+    min-width: 33.64px;
+    position: relative;
+}
+.vacation-cell_paid {
+    border-right: none;
+    border-left: none;
+}
+.vacation-cell_paid:before,
+.vacation-cell_unpaid:before
+{
+    content: '';
+    display: block;
+    position: relative;
+    min-width: 33.64px;
+    min-height: 26px;
+}
+.vacation-cell_ui-start:before {
+    left: 2px;
+}
+.vacation-cell_ui-end:before {
+    right: 2px;
+}
+.vacation-cell_paid:before,
+.vacation-cell_unpaid:before{
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+.vacation-cell_paid.vacation-cell_ui-start:before,
+.vacation-cell_unpaid.vacation-cell_ui-start:before{
+
+    border-radius: 3px 0 0 3px;
+}
+.vacation-cell_paid.vacation-cell_ui-end:before,
+.vacation-cell_unpaid.vacation-cell_ui-end:before{
+    /*right: 1px;*/
+    border-radius: 0 3px 3px 0;
+}
+.vacation-cell_unpaid.vacation-cell_ui-start:before,
+.vacation-cell_paid.vacation-cell_ui-start:before{
+    border-left: 1px solid transparent;
+}
+.vacation-cell_unpaid.vacation-cell_ui-end:before,
+.vacation-cell_paid.vacation-cell_ui-end:before {
+    border-right: 1px solid transparent;
+}
+
+.vacation-cell_ui-start.vacation-cell_ui-end:before {
+    max-width: 34px;
+    left: 1px;
+    border-radius: 3px;
+    margin-right: 1px;
+}
+tbody:nth-child(2) .vacation-cell_paid:before {
+    background-color: rgb(155, 153, 255);
+}
+tbody:nth-child(2) .vacation-cell_unpaid:before {
+    background-color: rgba(155, 153, 255, .1);
+}
+tbody:nth-child(2) .vacation-cell_paid:before,
+tbody:nth-child(2) .vacation-cell_unpaid:before {
+    border-color: rgb(155, 153, 255);
+}
+
+tbody:nth-child(3) .vacation-cell_paid:before {
+    background-color: rgb(122, 175, 255);
+}
+tbody:nth-child(3) .vacation-cell_unpaid:before {
+    background-color: rgba(122, 175, 255, .1);
+}
+tbody:nth-child(3) .vacation-cell_paid:before,
+tbody:nth-child(3) .vacation-cell_unpaid:before {
+    border-color: rgb(122, 175, 255);
+}
+
+tbody:nth-child(4) .vacation-cell_paid:before {
+    background-color: rgb(255, 153, 153);
+}
+tbody:nth-child(4) .vacation-cell_unpaid:before {
+    background-color: rgba(255, 153, 153, .1);
+}
+tbody:nth-child(4) .vacation-cell_paid:before,
+tbody:nth-child(4) .vacation-cell_unpaid:before {
+    border-color: rgb(255, 153, 153);
+}
+tbody:nth-child(5) .vacation-cell_paid:before {
+    background-color: rgb(255, 167, 104);
+}
+tbody:nth-child(5) .vacation-cell_unpaid:before {
+    background-color: rgba(255, 167, 104, .1);
+}
+tbody:nth-child(5) .vacation-cell_paid:before,
+tbody:nth-child(5) .vacation-cell_unpaid:before {
+    border-color: rgb(255, 167, 104);
+}
+tbody:nth-child(2) .vacation-cell_unpaid.vacation-cell_type-text:after {
+    color: rgb(155, 153, 255);
+}
+tbody:nth-child(3) .vacation-cell_unpaid.vacation-cell_type-text:after {
+    color: rgb(122, 175, 255);
+}
+tbody:nth-child(4) .vacation-cell_unpaid.vacation-cell_type-text:after {
+    color: rgb(255, 153, 153);
+}
+tbody:nth-child(5) .vacation-cell_unpaid.vacation-cell_type-text:after {
+    color: rgb(255, 167, 104);
+}
+.type-text {
+    position: relative;
+    color: #000;
+    font-size: 12px;
+    display: inline;
+    top: -23px;
+    z-index: 1;
+}
+.vacation-cell_unpaid.vacation-cell_type-text:after {
+    content: 'UnPd';
+}
+.vacation-cell_paid.vacation-cell_type-text:after {
+    content: 'Pd';
+    color: #fff;
+}
+.vacation-cell_type-text:after {
+    position: absolute;
+    color: #000;
+    font-size: 12px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    top: 7px;
+    left: 0;
+    z-index: 1;
+}
+.vacation-cell_unpaid.vacation-cell_type-text_left_s:after {
+    left: 3px;
+}
+.vacation-cell_unpaid.vacation-cell_type-text_left_l:after {
+    left: 20px;
+}
+.vacation-cell_paid.vacation-cell_type-text_left_s:after {
+    left: 12px;
+}
+.vacation-cell_paid.vacation-cell_type-text_left_l:after {
+    left: 28px;
+}
+
