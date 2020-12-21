@@ -1,25 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import {DateService} from '../../services/date.service';
+import { User, UserRealm } from '../../models/user';
+import { Team } from '../../models/team';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-calendar-table',
   templateUrl: './calendar-table.component.html',
-  styleUrls: ['./calendar-table.component.css']
+  styleUrls: ['./calendar-table.component.css'],
 })
 export class CalendarTableComponent implements OnInit {
-  Arr=Array;
+  Arr=Array; // переделать!
   currentDate: Date;
   daysAmount: number;
+  private userList: Array<User>;
+  private teams: Array<Team>;
 
-  // private teams: { [key in UserRealm]?: Team } = {};
 
-  constructor(private dateFormat:DateService) { 
+
+  constructor(private dateFormat:DateService, private _userService: UserService) { 
     this.currentDate = new Date();
     this.daysAmount = this.dateFormat.getDaysAmount();
+  
   }
-  changeDate(){
 
-  }
   getDayName(dayIndex:number):string{
     return this.dateFormat.getDayName(dayIndex);
   }
@@ -27,31 +31,37 @@ export class CalendarTableComponent implements OnInit {
     return this.dateFormat.getDaysAmount();
   }
 
+
   ngOnInit() {
-    // you need to get users
-    // then construct your team by getting users, such as
-    /*
-    * this.teams[user.realm] = {
-          realm: user.realm,
-          participants: []
-        };
-    * */
-    // and then add users to teams, such as
-    /*
-    * if (user.realm in this.teams) {
-        this.teams[user.realm].participants.push(user);
-      }
-    * */
-    // for now you should be have a teams
+    this._userService.getUsers().subscribe((value) => {
+      this.userList = value;
+    });
+    this.setTeams();
   }
 
-  // get teamsEntity(): Team[] {}
 
-  // monthDaysEntity(): Day[] {}
+  setTeams():void{
+    this.teams = [];
+    for(let key in UserRealm){
+      this.teams.push({
+        realm: <UserRealm>key,
+        participants: []
+      });
+    }
+    this.setTeamMembers();
+  }
 
-  // generateMonth(date: Date): Month {} // should to get month
+  setTeamMembers(){
+    for(let key in this.teams){
+      for(let userKey in this.userList){
+        if(this.teams[key].realm === this.userList[userKey].realm){
+          this.teams[key].participants.push(this.userList[userKey]);
+        }
+      }
+    }
+  }
 
-  // you can create the structure yourself too
+  
   ngOnDestroy():void{
   }
 
