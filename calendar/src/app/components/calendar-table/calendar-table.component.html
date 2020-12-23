@@ -3,7 +3,8 @@
         <thead>
             <tr>
                 <td class="button-wrap">
-                    <button class="button-inner">Add Vacation</button>
+
+                    <app-modal></app-modal>
                 </td>
                 <ng-container *ngFor="let i of daysArray">
                     <td>
@@ -15,7 +16,7 @@
                         </p>
                     </td>
                 </ng-container>
-                <td class="sum-column"> 
+                <td class="sum-column">
                     <p>Sum</p>
                 </td>
             </tr>
@@ -54,10 +55,10 @@
                         </svg>
                     </div>
                 </td>
-                <td class="team__day" *ngFor = "let day of daysArray">
+                <td class="team__day" *ngFor="let day of daysArray">
 
                 </td>
-                <td class="sum-column"> 
+                <td class="sum-column">
                     <p>Sum</p>
                 </td>
             </tr>
@@ -67,16 +68,13 @@
                         {{member.name}}
                     </p>
                 </td>
-                <td class="team__member-day" *ngFor = "let day of daysArray">
+                <td class="team__member-day" *ngFor="let day of daysArray">
 
                 </td>
-                <td class="sum-column"> 
+                <td class="sum-column">
                     <p>Sum</p>
                 </td>
             </tr>
         </tbody>
     </table>
 </section>
-
-
-
