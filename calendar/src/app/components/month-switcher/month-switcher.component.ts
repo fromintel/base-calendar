@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DateService} from '../../services/date.service';
+import { DateService } from '../../services/date.service';
+import { format } from 'date-fns'
 
 @Component({
   selector: 'app-month-switcher',
@@ -9,27 +10,28 @@ import {DateService} from '../../services/date.service';
 export class MonthSwitcherComponent implements OnInit {
   currentDate: Date;
   monthName: string
+  
 
   constructor(private dateFormat:DateService) {
-    this.currentDate = this.dateFormat.currentDate;
-    this.monthName = this.dateFormat.monthName;
-
-   }
+    this.currentDate = new Date();
+    this.monthName = format(this.currentDate, 'LLLL');
+  }
 
   ngOnInit() {
-    
-  }
-  switchMonth(direction:string){
-    this.currentDate = this.dateFormat.switchMonth(direction);
-    this.changeMonthOutput();
+    this.dateFormat.dateSubj.subscribe((value) => {
+      this.currentDate = value;
+    });
   }
 
-  changeMonthOutput(){
-    this.monthName = this.dateFormat.getMonth(this.currentDate);
+  private setMonthName():void {
+    this.monthName = format(this.currentDate, 'LLLL');
   }
 
-  // get date from service and displaying to the template
 
-  // switchMonth(direction: number) {}
+
+  switchMonth(direction: number): void{
+    this.dateFormat.changeCurrentDate(direction);
+    this.setMonthName();
+  }
 
 }

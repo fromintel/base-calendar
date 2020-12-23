@@ -1,11 +1,30 @@
-td {
+table{
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table thead tr td{
     width: 33px;
     height: 50px;
     border: 1px solid black;
-    border-bottom: 0px;
     margin: 0px;
     text-align: center;
 }
+
+
+tbody{
+    margin-top: 20px;
+}
+
+
+
+/* td {
+    width: 33px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 0px;
+    text-align: center;
+} */
 
 td p {
     padding: 0px;
@@ -35,4 +54,34 @@ td p {
 
 .weekend {
     background-color: lightgray;
+}
+
+
+.team__head, .team__member{
+    border: 1px solid #000;
+}
+
+
+.team__head .team__title{
+    width: 100%;
+    display: flex;
+}
+
+.team__head .team__title p{
+    display: block;
+}
+
+.team__body{
+    width: 100%;
+}
+
+.team-member{
+    width: 100%;
+    display: flex;
+}
+
+.team__day, .team__member-day, .sum-column{
+    width: 34px;
+    height: 34px;
+    border: 1px solid #000;
 }
