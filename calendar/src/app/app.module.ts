@@ -8,6 +8,7 @@ import { BaseLayoutComponent } from './components/base-layout/base-layout.compon
 import { CalendarTableComponent } from './components/calendar-table/calendar-table.component';
 import { MonthSwitcherComponent } from './components/month-switcher/month-switcher.component';
 import { MomentPipe } from './services/moment.pipe';
+import { CalendarFooterComponent } from './components/calendar-footer/calendar-footer.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MomentPipe } from './services/moment.pipe';
     CalendarTableComponent,
     MonthSwitcherComponent,
     MomentPipe,
+    CalendarFooterComponent,
   ],
   imports: [
     BrowserModule,

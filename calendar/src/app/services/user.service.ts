@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {User, UserRealm} from '../models/user'
 import {Team} from '../models/team'
 
@@ -27,7 +27,7 @@ export class UserService {
             ],
           },
           {
-            id: 1,
+            id: 2,
             name: "FE_Team_User2",
             email: "FE_Team_User2@mail.com",
             role: "FE_User1",
@@ -111,7 +111,7 @@ export class UserService {
             ],
           },
           {
-            id: 31,
+            id: 32,
             name: "Man_Team_User2",
             email: "Man_Team_User2@mail.com",
             role: "Man_User4",
@@ -130,6 +130,9 @@ export class UserService {
     this.teamInfo.next(this.teams)
     return this.teamInfo;
   }
+  /*getVacations(curDate:Date):Observable<number|string[]>{
+    
+  }*/
 
   // getUserById(): Observable<User>
 }

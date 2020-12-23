@@ -32,7 +32,7 @@
               <i class="fas fa-users"></i>
               <span>{{item.value.members.length}}</span>
               <div class="percent">{{item.value.percentageOfAbsent[1]}}%</div>
-              <button (click)="hidden = !hidden">
+              <button (click)="changeVisibility(item.value.realm)">
                 <i class="fas chevronBtn fa-chevron-up"></i>
               </button>
             </div>
@@ -47,7 +47,7 @@
       <tr
         class="employeeRow"
         *ngFor="let element of item.value.members"
-        [class.hidden]="hidden"
+        [ngClass]='{hidden:hiddenInfo[item.value.realm]}'
       >
         <td class="nameCell">{{ element.name }}</td>
         <td
@@ -60,6 +60,7 @@
         <td class="sumOfDaysOff">0</td>
       </tr>
     </tbody>
+    <tbody></tbody>
   </table>
 </section>
 
