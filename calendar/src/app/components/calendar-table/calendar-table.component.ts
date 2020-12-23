@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {DateService} from '../../services/date.service';
 import { User, UserRealm } from '../../models/user';
 import { Team } from '../../models/team';
+import { Day } from '../../models/day';
 import { UserService } from '../../services/user.service';
+import { setDate } from 'date-fns'
+
 
 @Component({
   selector: 'app-calendar-table',
@@ -10,9 +13,8 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./calendar-table.component.css'],
 })
 export class CalendarTableComponent implements OnInit {
-  Arr=Array; // переделать!
   currentDate: Date;
-  daysAmount: number;
+  daysArray: Day[];
   private userList: Array<User>;
   private teams: Array<Team>;
 
@@ -20,23 +22,24 @@ export class CalendarTableComponent implements OnInit {
 
   constructor(private dateFormat:DateService, private _userService: UserService) { 
     this.currentDate = new Date();
-    this.daysAmount = this.dateFormat.getDaysAmount();
-  
-  }
-
-  getDayName(dayIndex:number):string{
-    return this.dateFormat.getDayName(dayIndex);
-  }
-  getDaysAmount(){
-    return this.dateFormat.getDaysAmount();
+    this.daysArray = [];
   }
 
 
   ngOnInit() {
-    this._userService.getUsers().subscribe((value) => {
+    this._userService.getUsers().subscribe((value) => { //вынести в отдельную функцию
       this.userList = value;
     });
     this.setTeams();
+    this.dateFormat.dateSubj.subscribe((value) => { //вынести в отдельную функцию
+      console.log(value);
+      this.currentDate = value;
+      this.daysArray = this.setDaysInArray();
+    });
+    console.log(this.daysArray);
+  }
+
+  ngOnDestroy():void{
   }
 
 
@@ -51,7 +54,7 @@ export class CalendarTableComponent implements OnInit {
     this.setTeamMembers();
   }
 
-  setTeamMembers(){
+  setTeamMembers(): void{
     for(let key in this.teams){
       for(let userKey in this.userList){
         if(this.teams[key].realm === this.userList[userKey].realm){
@@ -61,8 +64,16 @@ export class CalendarTableComponent implements OnInit {
     }
   }
 
-  
-  ngOnDestroy():void{
+  setDaysInArray(): Day[]{
+    let monthDays = [];
+    for(let i = 1; i <= this.dateFormat.getDaysInMonth(); i++){
+      let day: Day = {
+        date: setDate(this.currentDate, i),
+        isDayOff: false
+      };
+      monthDays.push(day);
+    }
+    return monthDays;
   }
 
 }
