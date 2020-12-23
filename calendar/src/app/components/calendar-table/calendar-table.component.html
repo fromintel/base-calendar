@@ -31,7 +31,7 @@
             <div class="teamInfo__block">
               <i class="fas fa-users"></i>
               <span>{{item.value.members.length}}</span>
-              <div class="percent">{{item.value.percentageOfAbsent[1]}}%</div>
+              <div class="percent">{{item.value.percentageOfAbsent[currentMonth - 1]}}%</div>
               <button (click)="changeVisibility(item.value.realm)">
                 <i class="fas chevronBtn fa-chevron-up"></i>
               </button>
@@ -53,6 +53,7 @@
         <td
           class="dayCell"
           *ngFor="let day of days; index as i"
+          attr.data-value="{{'0' + (i + 1) + getCurrentDate().slice(2)}}"
           [ngClass]="{
             weekend: day.isDayOff
           }"

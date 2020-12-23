@@ -1,3 +1,5 @@
+import { Vacation } from "./vacation";
+
 export enum UserRealm {
   FRONT_END = "Frontend Team",
   DESIGNER = "Design Team",
@@ -14,6 +16,6 @@ export interface User {
   vacations: IVacations[];
 }
 
-interface IVacations {
+export interface IVacations {
   [key: string]: string;
 }

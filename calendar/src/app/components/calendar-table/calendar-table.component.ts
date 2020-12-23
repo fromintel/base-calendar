@@ -23,6 +23,7 @@ export class CalendarTableComponent implements OnInit {
   teamInfo: any;
   daysInMonth: number;
   currentDate: string;
+  currentMonth: string;
   hidden: boolean = false;
   sumArray:number|string[];
   //daysInMonth:number = moment(this.currentDate, "YYYY-MM").daysInMonth();
@@ -31,25 +32,19 @@ export class CalendarTableComponent implements OnInit {
     private userService: UserService,
   ) {
     this.hiddenInfo ={};
-    this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
-    this.currentDate = this.dateService.currentDate.value
-      .subtract(this.dateService.currentDate.value.date() - 1, "days")
-      .format("YYYY-MM-DD");
+    this.getDaysInMonth();
+    this.getCurrentMonth();
+    this.getCurrentDate();
     this.generateHeaderArray();
-    this.dateService.switchMonth$.subscribe((date) => {
-      this.daysInMonth = date.value.daysInMonth();
-      this.currentDate = date.value.format("YYYY-MM-DD");
-      this.generateHeaderArray();
-    });
   }
 
-  generateHeaderArray() {
+  generateHeaderArray(): void {
     for (let index = 0; index < this.daysInMonth; index++) {
       this.days.length = this.daysInMonth;
       let curDate = moment(this.currentDate).add(index, "days").format("ddd");
       let curFullDate = moment(this.currentDate)
         .add(index, "days")
-        .format("YYYY-MM-DD");
+        .format("DD-MM-YYYY");
       this.days[index] = {
         date: new Date(curFullDate),
         isDayOff: curDate === "Sat" ? true : curDate === "Sun" ? true : false,
@@ -57,16 +52,39 @@ export class CalendarTableComponent implements OnInit {
       };
     }
   }
-  changeVisibility(someInfo:string){
+  getDaysInMonth():number {
+    return this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
+  }
+
+  getCurrentMonth(): string {
+    return this.currentMonth = this.dateService.currentDate.value
+    .subtract(this.dateService.currentDate.value.date(), "month")
+    .format("M");
+  }
+  getCurrentDate(): string {
+    return this.currentDate = this.dateService.currentDate.value
+    .subtract(this.dateService.currentDate.value.date() - 1, "days")
+    .format("DD-MM-YYYY");
+  }
+  changeVisibility(someInfo:string): void{
     this.hiddenInfo[someInfo]= !this.hiddenInfo[someInfo];
   }
+
+
   ngOnInit() {
     // you need to get users
     // then construct your team by getting users, such as
-    const subTeamInfo: Subscription = this.userService
+    this.dateService.switchMonth$.subscribe((date) => {
+      this.daysInMonth = date.value.daysInMonth();
+      this.currentMonth = (date.value.format("M"));
+      this.currentDate = date.value.format("DD-MM-YYYY");
+      this.generateHeaderArray();
+    });
+
+    this.userService
       .getUsers()
       .subscribe((team) => {
-        console.log(team);
+        // console.log(team);
         for (let elem in team) {
           this.teams[team[elem].realm] = {
             realm: team[elem].realm,
@@ -75,7 +93,7 @@ export class CalendarTableComponent implements OnInit {
           };
           this.hiddenInfo[team[elem].realm] = false;
         }
-        console.log(this.hiddenInfo);
+        
         //console.log(this.hiddenInfo);
       });
 
@@ -96,23 +114,24 @@ export class CalendarTableComponent implements OnInit {
 
   // you can create the structure yourself too
 }
-
-// toggle(event) {
-  // const teamNode: HTMLElement[] = event.target.closest("tbody").children;
-  // const teamArray = [...teamNode];
-  // teamArray.forEach((member, index) => {
-  //   if (index > 0) {
-  //     console.log(member)
-
-  //     if (member.className === "hidden") {
-
-  //       console.log("remove");
-  //       member.classList.remove("hidden");
-  //     }
-  //     if(member.className !== "hidden") {
-  //       console.log("add")
-  //       member.classList.add("hidden");
-  //     }
-  //   }
-  // });
+// get isVacation() {
+//   const cellDate = this.date.toISOString();
+//   for (const vacationItem of this.vacation) {
+//     const vacationItemEntries = [...vacationItem.availableDatesList];
+//     const vacationUiStart = vacationItemEntries[0];
+//     const vacationUiEnd = vacationItemEntries[vacationItemEntries.length - 1];
+//     if (vacationItem.availableDatesList.has(cellDate)) {
+//       if (!this.isWeekend) {
+//         this.increaseVacationSum();
+//       }
+//       if (cellDate === vacationUiStart) {
+//         this.component.className += " vacation-cell_ui-start";
+//       }
+//       if (cellDate === vacationUiEnd) {
+//         this.component.className += " vacation-cell_ui-end";
+//       }
+//       return { type: vacationItem.type };
+//     }
+//   }
+//   return false;
 // }
