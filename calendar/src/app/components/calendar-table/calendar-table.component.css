@@ -1,9 +1,9 @@
-table{
+table {
     border-collapse: collapse;
     margin: 0 auto;
 }
 
-table thead tr td{
+table thead tr td {
     width: 33px;
     height: 50px;
     border: 1px solid black;
@@ -11,11 +11,9 @@ table thead tr td{
     text-align: center;
 }
 
-
-tbody{
+tbody {
     margin-top: 20px;
 }
-
 
 
 /* td {
@@ -31,16 +29,65 @@ td p {
     margin: 0px;
 }
 
-.button-wrap {
-    /* width: 200px; */
-    margin: 0 auto;
+.weekend {
+    background-color: lightgray;
+}
+
+.team__head,
+.team__member {
+    border: 1px solid #000;
+}
+
+.team__head .team__title {
+    width: 100%;
+    display: flex;
+}
+
+.team__head .team__title p {
+    display: block;
+}
+
+.team__body {
+    width: 100%;
+}
+
+.team-member {
+    width: 100%;
+    display: flex;
+}
+
+.team__day,
+.team__member-day,
+.sum-column {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #000;
+}
+
+
+/*добавленые стили + обновленные стили*/
+
+.team__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 263px;
+    border: 1px solid rgba(126, 126, 126, 0.3);
+}
+
+.team__vacation {
+    display: block;
+    padding: 0 4px;
+    border-radius: 2px;
+    background-color: #9b99ff;
+    color: #fff;
+    font-size: 12px;
 }
 
 .button-inner {
-    width: 144px;
     height: 40px;
     border-radius: 7px;
-    background-color: #48BA46;
+    background-color: #48ba46;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.5;
@@ -50,38 +97,26 @@ td p {
     justify-content: center;
     padding-left: 20px;
     transition: all linear 0.2s;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    width: 144px;
+    margin-right: 119px;
 }
 
-.weekend {
-    background-color: lightgray;
+.team__member-name {
+    padding: 5px 15px;
 }
 
-
-.team__head, .team__member{
-    border: 1px solid #000;
-}
-
-
-.team__head .team__title{
-    width: 100%;
-    display: flex;
-}
-
-.team__head .team__title p{
-    display: block;
-}
-
-.team__body{
+body {
+    max-width: 1920px;
     width: 100%;
 }
 
-.team-member{
-    width: 100%;
-    display: flex;
+.vacation__plus {
+    margin-right: 10px;
 }
 
-.team__day, .team__member-day, .sum-column{
-    width: 34px;
-    height: 34px;
-    border: 1px solid #000;
+.month-switcher__month {
+    max-width: 270px;
 }
