@@ -38,6 +38,7 @@ export class CalendarTableComponent implements OnInit {
     });
     console.log(this.daysArray);
   }
+ 
 
   ngOnDestroy():void{
   }
@@ -48,10 +49,13 @@ export class CalendarTableComponent implements OnInit {
     for(let key in UserRealm){
       this.teams.push({
         realm: <UserRealm>key,
-        participants: []
+        participants: [] 
       });
+     
+     
     }
     this.setTeamMembers();
+    
   }
 
   setTeamMembers(): void{
@@ -59,10 +63,13 @@ export class CalendarTableComponent implements OnInit {
       for(let userKey in this.userList){
         if(this.teams[key].realm === this.userList[userKey].realm){
           this.teams[key].participants.push(this.userList[userKey]);
+          
         }
       }
     }
+  
   }
+
 
   setDaysInArray(): Day[]{
     let monthDays = [];
@@ -75,5 +82,5 @@ export class CalendarTableComponent implements OnInit {
     }
     return monthDays;
   }
-
 }
+
