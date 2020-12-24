@@ -16,11 +16,11 @@ export class CalendarTableComponent implements OnInit {
   currentDate: Date;
   daysArray: Day[];
   private userList: Array<User>;
-  private teams: Array<Team>;
+  public teams: Array<Team>;
 
 
 
-  constructor(private dateFormat:DateService, private _userService: UserService) { 
+  constructor(public dateFormat:DateService, private _userService: UserService) { 
     this.currentDate = new Date();
     this.daysArray = [];
   }

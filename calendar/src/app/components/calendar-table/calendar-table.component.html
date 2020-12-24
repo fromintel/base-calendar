@@ -3,10 +3,11 @@
         <thead>
             <tr>
                 <td class="button-wrap">
-
                     <button class="button-inner">
                         <span class="vacation__plus">+</span>
                         Add Vacation</button>
+                    <app-modal></app-modal>
+
                 </td>
                 <ng-container *ngFor="let i of daysArray">
                     <td>
@@ -79,6 +80,7 @@
                 </td>
             </tr>
         </tbody>
+
         <tbody class="footer">
             <tr class="footer__class">
                 <td class="footer__name">Day-Person Stats </td>
@@ -116,5 +118,6 @@
                 </div>
             </div>
         </tbody>
+
     </table>
 </section>
