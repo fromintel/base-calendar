@@ -1,0 +1,24 @@
+<button type="button" class=" button-inner btn" (click)="openModal(template)">Add Vacation</button>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Vacation request</h4>
+        <p class="modal__days-count">8 days</p>
+    </div>
+    <div class="modal__form">
+        <div class="modal__subtitle">Dates</div>
+        <div class="modal__input-wrapper">
+            <p class="modal__input-label">From</p>
+            <p class="modal__input-label">To</p><input class="modal__input" type="date"><input class="modal__input" type="date"></div>
+        <div class="modal__subtitle">Vac Type</div>
+        <select class="modal__select"><option value="Paid">Paid</option><option value="Unpaid">Unpaid</option></select>
+        <div class="modal__buttons">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <div aria-hidden="true"class="modal__close">Send </div>
+            </button>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">  
+                <div aria-hidden="true"class="modal__send">Close </div>
+                </button>
+        </div>
+    </div>
+</ng-template>

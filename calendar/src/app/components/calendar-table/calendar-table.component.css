@@ -1,3 +1,4 @@
+
         table {
             border-collapse: collapse;
             margin: 0 auto;
@@ -55,7 +56,59 @@
             height: 34px;
             border: 1px solid #000;
         }
-        
+
+.footer {
+    margin-top: 37px;
+}
+
+.footer__name {
+    border: 1px solid black;
+}
+
+.footer__text {
+    display: flex;
+}
+
+.footer__title {
+    border-bottom: 1px solid black;
+}
+
+.team {
+    margin-bottom: 37px;
+}
+
+td p {
+    padding: 0px;
+    margin: 0px;
+}
+
+.weekend {
+    background-color: lightgray;
+}
+
+.team__head,
+.team__member {
+    border: 1px solid #000;
+}
+
+.team__head .team__title {
+    width: 100%;
+    display: flex;
+}
+
+.team__head .team__title p {
+    display: block;
+}
+
+.team__body {
+    width: 100%;
+}
+
+.team-member {
+    width: 100%;
+    display: flex;
+}
+    
         .team__title {
             display: flex;
             justify-content: space-around;
