@@ -1,7 +1,7 @@
 export enum UserRealm {
-  FRONT_END = 'fe',
-  BACK_END = 'be',
-  DESIGNER = 'designer',
+  FRONT_END = 'FRONT_END',
+  BACK_END = 'BACK_END',
+  DESIGNER = 'DESIGNER',
 }
 
 export interface User {
