@@ -1,6 +1,7 @@
         table {
             border-collapse: collapse;
             margin: 0 auto;
+            border-spacing: 0px;
         }
         
         table thead tr td {
@@ -14,13 +15,6 @@
         tbody {
             margin-top: 20px;
         }
-        /* td {
-    width: 33px;
-    height: 50px;
-    border: 1px solid black;
-    margin: 0px;
-    text-align: center;
-} */
         
         td p {
             padding: 0px;
@@ -61,14 +55,13 @@
             height: 34px;
             border: 1px solid #000;
         }
-        /*добавленые стили + обновленные стили*/
         
         .team__title {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             width: 263px;
-            border: 1px solid rgba(126, 126, 126, 0.3);
+            height: 100%;
         }
         
         .team__vacation {
