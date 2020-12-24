@@ -1,118 +1,118 @@
-    table {
-        border-collapse: collapse;
-        margin: 0 auto;
-    }
-    
-    table thead tr td {
-        width: 33px;
-        height: 50px;
-        border: 1px solid black;
-        margin: 0px;
-        text-align: center;
-    }
-    
-    tbody {
-        margin-top: 20px;
-    }
-    /* td {
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        
+        table thead tr td {
+            width: 33px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 0px;
+            text-align: center;
+        }
+        
+        tbody {
+            margin-top: 20px;
+        }
+        /* td {
     width: 33px;
     height: 50px;
     border: 1px solid black;
     margin: 0px;
     text-align: center;
 } */
-    
-    td p {
-        padding: 0px;
-        margin: 0px;
-    }
-    
-    .weekend {
-        background-color: lightgray;
-    }
-    
-    .team__head,
-    .team__member {
-        border: 1px solid #000;
-    }
-    
-    .team__head .team__title {
-        width: 100%;
-        display: flex;
-    }
-    
-    .team__head .team__title p {
-        display: block;
-    }
-    
-    .team__body {
-        width: 100%;
-    }
-    
-    .team-member {
-        width: 100%;
-        display: flex;
-    }
-    
-    .team__day,
-    .team__member-day,
-    .sum-column {
-        width: 34px;
-        height: 34px;
-        border: 1px solid #000;
-    }
-    /*добавленые стили + обновленные стили*/
-    
-    .team__title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 263px;
-        border: 1px solid rgba(126, 126, 126, 0.3);
-    }
-    
-    .team__vacation {
-        display: block;
-        padding: 0 4px;
-        border-radius: 2px;
-        background-color: #9b99ff;
-        color: #fff;
-        font-size: 12px;
-    }
-    
-    .button-inner {
-        height: 40px;
-        border-radius: 7px;
-        background-color: #48ba46;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 1.5;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 20px;
-        transition: all linear 0.2s;
-        border: none;
-        cursor: pointer;
-        color: #fff;
-        width: 144px;
-        margin-right: 119px;
-    }
-    
-    .team__member-name {
-        padding: 5px 15px;
-    }
-    
-    body {
-        max-width: 1920px;
-        width: 100%;
-    }
-    
-    .vacation__plus {
-        margin-right: 10px;
-    }
-    
-    .month-switcher__month {
-        max-width: 270px;
-    }
+        
+        td p {
+            padding: 0px;
+            margin: 0px;
+        }
+        
+        .weekend {
+            background-color: lightgray;
+        }
+        
+        .team__head,
+        .team__member {
+            border: 1px solid #000;
+        }
+        
+        .team__head .team__title {
+            width: 100%;
+            display: flex;
+        }
+        
+        .team__head .team__title p {
+            display: block;
+        }
+        
+        .team__body {
+            width: 100%;
+        }
+        
+        .team-member {
+            width: 100%;
+            display: flex;
+        }
+        
+        .team__day,
+        .team__member-day,
+        .sum-column {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #000;
+        }
+        /*добавленые стили + обновленные стили*/
+        
+        .team__title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 263px;
+            border: 1px solid rgba(126, 126, 126, 0.3);
+        }
+        
+        .team__vacation {
+            display: block;
+            padding: 0 4px;
+            border-radius: 2px;
+            background-color: #9b99ff;
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        .button-inner {
+            height: 40px;
+            border-radius: 7px;
+            background-color: #48ba46;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 20px;
+            transition: all linear 0.2s;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            width: 144px;
+            margin-right: 119px;
+        }
+        
+        .team__member-name {
+            padding: 5px 15px;
+        }
+        
+        body {
+            max-width: 1920px;
+            width: 100%;
+        }
+        
+        .vacation__plus {
+            margin-right: 10px;
+        }
+        
+        .month-switcher__month {
+            max-width: 270px;
+        }
