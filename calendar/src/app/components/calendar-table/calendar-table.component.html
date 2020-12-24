@@ -3,7 +3,10 @@
         <thead>
             <tr>
                 <td class="button-wrap">
-                    <button class="button-inner">Add Vacation</button>
+
+                    <button class="button-inner">
+                        <span class="vacation__plus">+</span>
+                        Add Vacation</button>
                 </td>
                 <ng-container *ngFor="let i of daysArray">
                     <td>
@@ -64,7 +67,7 @@
             </tr>
             <tr class="team__body" *ngFor="let member of team.participants">
                 <td class="team__member">
-                    <p>
+                    <p class="team__member-name">
                         {{member.name}}
                     </p>
                 </td>
