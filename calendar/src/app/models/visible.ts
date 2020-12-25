@@ -1,3 +1,3 @@
 export interface Visible {
-    [key:string]:boolean;
+  [key: string]: boolean;
 }

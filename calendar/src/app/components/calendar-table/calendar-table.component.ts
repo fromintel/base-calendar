@@ -1,11 +1,10 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import * as moment from "moment";
 import { DateService } from "src/app/services/date.service";
 import { Day } from "src/app/models/day";
 import { Team } from "src/app/models/team";
-import { UserRealm, User } from "src/app/models/user";
+import { UserRealm, User, UserVacationsById } from "src/app/models/user";
 import { UserService } from "../../services/user.service";
-import { Subscription } from "rxjs";
 import { Visible } from "src/app/models/Visible";
 
 @Component({
@@ -16,35 +15,72 @@ import { Visible } from "src/app/models/Visible";
 export class CalendarTableComponent implements OnInit {
   private teams: { [key in UserRealm]?: Team } = {};
 
-  //@Input() currentDate: moment.Moment
   days: Day[] = [];
   user: User[] = [];
-  hiddenInfo:Visible;
+  hiddenInfo: Visible;
   teamInfo: any;
   daysInMonth: number;
   currentDate: string;
-  currentMonth: string;
+  currentMonth: number;
   hidden: boolean = false;
-  sumArray:number|string[];
-  //daysInMonth:number = moment(this.currentDate, "YYYY-MM").daysInMonth();
+  sumArray: number[];
+  sumIdArray: UserVacationsById;
+  getVacationsObservable: any;
+  getVacationByIdObservable: any;
   constructor(
     private dateService: DateService,
     private userService: UserService,
   ) {
-    this.hiddenInfo ={};
-    this.getDaysInMonth();
-    this.getCurrentMonth();
-    this.getCurrentDate();
+    this.currentMonth = parseInt(moment().format("MM")) - 1;
+    this.hiddenInfo = {};
+    this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
+    this.currentDate = this.dateService.currentDate.value
+      .subtract(this.dateService.currentDate.value.date() - 1, "days")
+      .format("YYYY-MM-DD");
     this.generateHeaderArray();
+
+    this.getVacationsObservable = this.userService
+      .getVacations(this.currentDate)
+      .subscribe((vacationArr) => {
+        this.sumArray = vacationArr;
+      });
+    this.getVacationByIdObservable = this.userService
+      .getVacationById(this.currentDate)
+      .subscribe((vacationIdArr) => {
+        this.sumIdArray = vacationIdArr;
+      });
+
+    this.getVacationsObservable.unsubscribe();
+    this.getVacationByIdObservable.unsubscribe();
+
+    this.dateService.switchMonth$.subscribe((date) => {
+      this.daysInMonth = date.value.daysInMonth();
+      this.currentDate = date.value.format("YYYY-MM-DD");
+      this.currentMonth = date.value.month();
+      this.generateHeaderArray();
+      this.getVacationsObservable = this.userService
+        .getVacations(this.currentDate)
+        .subscribe((vacationArr) => {
+          this.sumArray = vacationArr;
+        });
+
+      this.getVacationByIdObservable = this.userService
+        .getVacationById(this.currentDate)
+        .subscribe((vacationIdArr) => {
+          this.sumIdArray = vacationIdArr;
+        });
+      this.getVacationsObservable.unsubscribe();
+      this.getVacationByIdObservable.unsubscribe();
+    });
   }
 
-  generateHeaderArray(): void {
+  generateHeaderArray() {
     for (let index = 0; index < this.daysInMonth; index++) {
       this.days.length = this.daysInMonth;
       let curDate = moment(this.currentDate).add(index, "days").format("ddd");
       let curFullDate = moment(this.currentDate)
         .add(index, "days")
-        .format("DD-MM-YYYY");
+        .format("YYYY-MM-DD");
       this.days[index] = {
         date: new Date(curFullDate),
         isDayOff: curDate === "Sat" ? true : curDate === "Sun" ? true : false,
@@ -52,58 +88,26 @@ export class CalendarTableComponent implements OnInit {
       };
     }
   }
-  getDaysInMonth():number {
-    return this.daysInMonth = this.dateService.currentDate.value.daysInMonth();
+
+  changeVisibility(someInfo: string) {
+    this.hiddenInfo[someInfo] = !this.hiddenInfo[someInfo];
   }
 
-  getCurrentMonth(): string {
-    return this.currentMonth = this.dateService.currentDate.value
-    .subtract(this.dateService.currentDate.value.date(), "month")
-    .format("M");
+  getDate(index) {
+    return moment(this.currentDate).format("YYYY-MM") + "-" + index;
   }
-  getCurrentDate(): string {
-    return this.currentDate = this.dateService.currentDate.value
-    .subtract(this.dateService.currentDate.value.date() - 1, "days")
-    .format("DD-MM-YYYY");
-  }
-  changeVisibility(someInfo:string): void{
-    this.hiddenInfo[someInfo]= !this.hiddenInfo[someInfo];
-  }
-
 
   ngOnInit() {
-    // you need to get users
-    // then construct your team by getting users, such as
-    this.dateService.switchMonth$.subscribe((date) => {
-      this.daysInMonth = date.value.daysInMonth();
-      this.currentMonth = (date.value.format("M"));
-      this.currentDate = date.value.format("DD-MM-YYYY");
-      this.generateHeaderArray();
-    });
-
-    this.userService
-      .getUsers()
-      .subscribe((team) => {
-        // console.log(team);
-        for (let elem in team) {
-          this.teams[team[elem].realm] = {
-            realm: team[elem].realm,
-            percentageOfAbsent: team[elem].percentageOfAbsent,
-            members: team[elem].members,
-          };
-          this.hiddenInfo[team[elem].realm] = false;
-        }
-        
-        //console.log(this.hiddenInfo);
-      });
-
-    //and then add users to teams, such as
-    /*
-    * if (user.realm in this.teams) {
-        this.teams[user.realm].participants.push(user);
+    this.userService.getUsers().subscribe((team) => {
+      for (let elem in team) {
+        this.teams[team[elem].realm] = {
+          realm: team[elem].realm,
+          percentageOfAbsent: team[elem].percentageOfAbsent,
+          members: team[elem].members,
+        };
+        this.hiddenInfo[team[elem].realm] = false;
       }
-    * */
-    // for now you should be have a teams
+    });
   }
 
   // get teamsEntity(): Team[] {}
@@ -114,24 +118,3 @@ export class CalendarTableComponent implements OnInit {
 
   // you can create the structure yourself too
 }
-// get isVacation() {
-//   const cellDate = this.date.toISOString();
-//   for (const vacationItem of this.vacation) {
-//     const vacationItemEntries = [...vacationItem.availableDatesList];
-//     const vacationUiStart = vacationItemEntries[0];
-//     const vacationUiEnd = vacationItemEntries[vacationItemEntries.length - 1];
-//     if (vacationItem.availableDatesList.has(cellDate)) {
-//       if (!this.isWeekend) {
-//         this.increaseVacationSum();
-//       }
-//       if (cellDate === vacationUiStart) {
-//         this.component.className += " vacation-cell_ui-start";
-//       }
-//       if (cellDate === vacationUiEnd) {
-//         this.component.className += " vacation-cell_ui-end";
-//       }
-//       return { type: vacationItem.type };
-//     }
-//   }
-//   return false;
-// }

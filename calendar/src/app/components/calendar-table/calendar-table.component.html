@@ -13,7 +13,8 @@
           *ngFor="let day of days; index as i"
           [ngClass]="{
             weekend: day.isDayOff
-          }">
+          }"
+        >
           <span class="outputDay">{{ day.dayOfWeek.slice(0, 2) }}</span>
           <span class="outputDate">{{ i + 1 }}</span>
         </td>
@@ -30,39 +31,48 @@
             <p class="teamInfo__name">{{ item.key }}</p>
             <div class="teamInfo__block">
               <i class="fas fa-users"></i>
-              <span>{{item.value.members.length}}</span>
-              <div class="percent">{{item.value.percentageOfAbsent[currentMonth - 1]}}%</div>
+              <span>{{ item.value.members.length }}</span>
+              <div class="percent">
+                {{ item.value.percentageOfAbsent[currentMonth] }}%
+              </div>
               <button (click)="changeVisibility(item.value.realm)">
                 <i class="fas chevronBtn fa-chevron-up"></i>
               </button>
             </div>
           </div>
         </td>
-        <td
-          class="teamInfo"
-          *ngFor="let day of days; index as i"
-        ></td>
+        <td class="teamInfo" *ngFor="let day of days; index as i"></td>
         <td class="teamInfo"></td>
       </tr>
       <tr
         class="employeeRow"
         *ngFor="let element of item.value.members"
-        [ngClass]='{hidden:hiddenInfo[item.value.realm]}'
+        [ngClass]="{ hidden: hiddenInfo[item.value.realm] }"
       >
         <td class="nameCell">{{ element.name }}</td>
         <td
           class="dayCell"
           *ngFor="let day of days; index as i"
-          attr.data-value="{{'0' + (i + 1) + getCurrentDate().slice(2)}}"
+          attr.data-value="{{ getDate(i + 1) }}"
           [ngClass]="{
             weekend: day.isDayOff
           }"
         ></td>
-        <td class="sumOfDaysOff">0</td>
+        <td class="sumOfDaysOff">{{ sumIdArray[element.id] }}</td>
       </tr>
     </tbody>
-    <tbody></tbody>
+    <tbody>
+      <tr class="vacationSum">
+        <td class="vacationSum__title">Day-Person Stats</td>
+        <td
+          class="vacationSum__cell"
+          *ngFor="let day of sumArray"
+          [ngClass]="{ weekend: day == -1 }"
+        >
+          {{ day != -1 ? day : "" }}
+        </td>
+        <td class="vacationSum__cell"></td>
+      </tr>
+    </tbody>
   </table>
 </section>
-
-

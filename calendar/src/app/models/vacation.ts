@@ -1,5 +1,5 @@
 export interface Vacation {
-  type: string;
+  id: number;
   startDate: string;
   endDate: string;
   userId: number;
