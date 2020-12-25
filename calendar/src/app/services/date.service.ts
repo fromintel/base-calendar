@@ -6,17 +6,15 @@ import { BehaviorSubject, Observable, Subject } from "rxjs";
   providedIn: "root",
 })
 export class DateService {
-  switchMonth$:Observable<any>;
+  switchMonth$: Observable<any>;
   private switchSubject = new Subject<any>();
   constructor() {
     this.switchMonth$ = this.switchSubject.asObservable();
   }
 
   currentDate: BehaviorSubject<moment.Moment> = new BehaviorSubject(moment());
-    // date: some Subject (or BehaviorSubject<Date>)
-    switchMonth(direction: number) {
-      const value = this.currentDate.value.add(direction, 'month');
-      this.switchSubject.next(this.currentDate);
-    }
+  switchMonth(direction: number) {
+    this.currentDate.value.add(direction, "month");
+    this.switchSubject.next(this.currentDate);
+  }
 }
-

@@ -17,3 +17,7 @@ export interface User {
 interface IVacations {
   [key: string]: string;
 }
+export interface UserVacationsById {
+  id?: number;
+  vacSum?: number;
+}

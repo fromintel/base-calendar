@@ -6,8 +6,8 @@
 }
 thead{
   display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
+  vertical-align: middle;
+  border-color: inherit;
 }
 
 /* button styles */
@@ -78,6 +78,9 @@ tbody:after {
   display: table-row;
   content: '';
 }
+tr:first-child td{
+  max-width: 260px;
+}
 
 /* mainRow styles */
 .mainRow::last-child {
@@ -119,7 +122,6 @@ tbody:after {
 }
 
 
-
 .monthBlock {
   width: 100%;
   margin: 0 auto;
@@ -142,9 +144,16 @@ tbody:after {
   padding: 0 40px;
 }
 
-
-
-
+.vacationSum__title{
+  font-weight: 600;
+  font-size: 12px;
+  padding-left: 24px;
+}
+.vacationSum__cell{
+  text-align: center;
+  font-weight: normal;
+  font-size: 14px;
+}
 
 
 
@@ -202,14 +211,6 @@ td.sumOfDaysOff {
   outline: none;
 }
 
-
-
-
-
-
-
-
-
 .FrontendTeam .mainRow td {
   background: var(--teamHeader-bg);
 }
@@ -253,7 +254,9 @@ td.sumOfDaysOff {
     border-left: 3px solid var(--manager-color);
 }
 
-
+.vacationSum{
+  background:#F3F3F3;
+}
 .dayCell {
     min-width: 33.64px;
     position: relative;

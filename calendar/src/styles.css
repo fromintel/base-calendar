@@ -5,58 +5,53 @@
   --designer-color: #7aafff;
   --backend-color: #ff9999;
   --manager-color: #ffa768;
-  --main-row: #F3F3F3;
+  --main-row: #f3f3f3;
   --teamHeader-bg: rgba(155, 153, 255, 0.1);
-  --btn-bg: #48BA46;
+  --btn-bg: #48ba46;
 }
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
 body {
-font-family: "Open Sans", sans-serif;
-font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
 }
 
 #app-root {
-width: 100vw;
-min-height: 100vh;
-}
-
-table {
-
+  width: 100vw;
+  min-height: 100vh;
 }
 
 td {
-border: 1px solid #D7D7D7;
+  border: 1px solid #d7d7d7;
 }
 
 button {
-cursor: pointer;
-display: inline-block;
-border: none;
-outline: none;
-transition: opacity .2s;
+  cursor: pointer;
+  display: inline-block;
+  border: none;
+  outline: none;
+  transition: opacity 0.2s;
 }
-button:hover{
-  opacity: .8;
+button:hover {
+  opacity: 0.8;
 }
 
-input{
-display: block;
-width: 100%;
-outline: none;
+input {
+  display: block;
+  width: 100%;
+  outline: none;
 }
 
 .weekend {
-background: #F0F0F0;
+  background: #f0f0f0;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 .fa-users {
