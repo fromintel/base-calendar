@@ -6,6 +6,8 @@ import { Team } from "src/app/models/team";
 import { UserRealm, User, UserVacationsById } from "src/app/models/user";
 import { UserService } from "../../services/user.service";
 import { Visible } from "src/app/models/Visible";
+import { MatDialog, MatDialogConfig } from "@angular/material";
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: "app-calendar-table",
@@ -30,6 +32,7 @@ export class CalendarTableComponent implements OnInit {
   constructor(
     private dateService: DateService,
     private userService: UserService,
+    private dialog: MatDialog,
   ) {
     this.currentMonth = parseInt(moment().format("MM")) - 1;
     this.hiddenInfo = {};
@@ -110,6 +113,13 @@ export class CalendarTableComponent implements OnInit {
     });
   }
 
+// modal window
+  onShow() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(ModalComponent, dialogConfig)
+  }
   // get teamsEntity(): Team[] {}
 
   // monthDaysEntity(): Day[] {}

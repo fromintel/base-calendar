@@ -9,6 +9,10 @@ import { CalendarTableComponent } from "./components/calendar-table/calendar-tab
 import { MonthSwitcherComponent } from "./components/month-switcher/month-switcher.component";
 import { MomentPipe } from "./services/moment.pipe";
 import { CalendarFooterComponent } from "./components/calendar-footer/calendar-footer.component";
+import { ModalComponent } from "./components/modal/modal.component";
+import { MaterialModule } from "./material/material.module";
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations"
+
 
 @NgModule({
   declarations: [
@@ -20,8 +24,13 @@ import { CalendarFooterComponent } from "./components/calendar-footer/calendar-f
     MomentPipe,
     CalendarFooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [ModalComponent],
 })
 export class AppModule {}

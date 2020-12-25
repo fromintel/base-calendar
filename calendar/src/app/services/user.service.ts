@@ -136,13 +136,11 @@ export class UserService {
 
   getVacations(curDate: string): BehaviorSubject<number[]> {
     let curr: moment.Moment = moment(curDate);
-    console.log(curr.format("YYYY MM DD"));
     this.dayArr.length = curr.daysInMonth();
     this.dayArr.fill(0);
     for (let day = 0; day < curr.daysInMonth(); day++) {
       curr = moment(curDate);
       if (curr.add(day, "days").format("ddd") == "Sat") {
-        console.log("weekend", "day", day, "dayofweek", curr.format("ddd"));
         this.dayArr[day] = -1;
         if (typeof this.dayArr[day + 1] !== "undefined") {
           this.dayArr[day + 1] = -1;
@@ -164,13 +162,11 @@ export class UserService {
           ) {
             if (start.month() < curr.month() || start.year() < curr.year()) {
               start = moment(`${curr.year()}-${curr.month() + 1}-01`);
-              console.log("Changed start with month lower than current", start);
             }
             if (end.month() > curr.month() || end.year() > curr.year()) {
               end = moment(
                 `${curr.year()}-${curr.month() + 1}-${curr.daysInMonth()}`,
               );
-              console.log("Changed end with month greater than current", end);
             }
             for (let day = 0; day < curr.daysInMonth(); day++) {
               curr = moment(curDate);
@@ -211,13 +207,11 @@ export class UserService {
           ) {
             if (start.month() < curr.month() || start.year() < curr.year()) {
               start = moment(`${curr.year()}-${curr.month() + 1}-01`);
-              console.log("Changed start with month lower than current", start);
             }
             if (end.month() > curr.month() || end.year() > curr.year()) {
               end = moment(
                 `${curr.year()}-${curr.month() + 1}-${curr.daysInMonth()}`,
               );
-              console.log("Changed end with month greater than current", end);
             }
             sumVacations += end.date() - start.date();
           }
