@@ -1,8 +1,90 @@
-.modal{
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: greenyellow;
-  width: 200px;
-  height: 200px;
+.controls-container {
+  width: 100%;
+  height: 100%;
 }
+.controls-container > * {
+  width: 100%;
+}
+.form-group {
+  background: #ffffff;
+  /* box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.25); */
+  border-radius: 5px;
+  color: #000;
+}
+
+.modal-form__column {
+  min-width: 393px;
+  min-height: 373px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-form__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: #eaeaea;
+  color: #666666;
+  border-radius: 5px;
+  padding: 10px;
+}
+.modal-form__title {
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+}
+.modal-form__vacation {
+  display: inline-block;
+  font-family: Open Sans;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+.modal-form__body {
+  padding: 10px;
+}
+.modal-form__subtitle {
+  font-family: Open Sans;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+.modal-form__dates {
+  display: flex;
+  justify-content: space-around;
+}
+.input-wrapper {
+  margin: 10px;
+}
+.modal-form__dates label {
+  font-family: Open Sans;
+  font-size: 12px;
+  line-height: 18px;
+}
+.modal-form__dates input {
+  flex: 0 0 45%;
+  border: none;
+  border-bottom: 1px solid #d0d0d0;
+}
+.vac-type {
+  width: 100%;
+  padding: 5px;
+  background: #e9e9e9;
+  border-radius: 3px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.modal-form__footer{
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.modal-form__btn{
+  padding: 15px 20px;
+}
+

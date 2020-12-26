@@ -41,12 +41,13 @@ export class CalendarTableComponent implements OnInit {
       .subtract(this.dateService.currentDate.value.date() - 1, "days")
       .format("YYYY-MM-DD");
     this.generateHeaderArray();
-
+    // get vacation for a member
     this.getVacationsObservable = this.userService
       .getVacations(this.currentDate)
       .subscribe((vacationArr) => {
         this.sumArray = vacationArr;
       });
+    // get vacation for a day
     this.getVacationByIdObservable = this.userService
       .getVacationById(this.currentDate)
       .subscribe((vacationIdArr) => {
@@ -55,18 +56,19 @@ export class CalendarTableComponent implements OnInit {
 
     this.getVacationsObservable.unsubscribe();
     this.getVacationByIdObservable.unsubscribe();
-
+    // watch month change
     this.dateService.switchMonth$.subscribe((date) => {
       this.daysInMonth = date.value.daysInMonth();
       this.currentDate = date.value.format("YYYY-MM-DD");
       this.currentMonth = date.value.month();
       this.generateHeaderArray();
+      // subscribe user vacation and make day-vacation sum
       this.getVacationsObservable = this.userService
         .getVacations(this.currentDate)
         .subscribe((vacationArr) => {
           this.sumArray = vacationArr;
         });
-
+        // subscribe user vacation and make member-vacation sum
       this.getVacationByIdObservable = this.userService
         .getVacationById(this.currentDate)
         .subscribe((vacationIdArr) => {
@@ -76,8 +78,8 @@ export class CalendarTableComponent implements OnInit {
       this.getVacationByIdObservable.unsubscribe();
     });
   }
-
-  generateHeaderArray() {
+  // generation of head tr with weekdays 
+  generateHeaderArray(): void {
     for (let index = 0; index < this.daysInMonth; index++) {
       this.days.length = this.daysInMonth;
       let curDate = moment(this.currentDate).add(index, "days").format("ddd");
@@ -91,16 +93,17 @@ export class CalendarTableComponent implements OnInit {
       };
     }
   }
-
-  changeVisibility(someInfo: string) {
+  // hide members
+  changeVisibility(someInfo: string): void {
     this.hiddenInfo[someInfo] = !this.hiddenInfo[someInfo];
   }
-
-  getDate(index) {
+  // date for percentage
+  getDate(index: number): string{
     return moment(this.currentDate).format("YYYY-MM") + "-" + index;
   }
 
   ngOnInit() {
+    // get teams objects and add flag for hiding
     this.userService.getUsers().subscribe((team) => {
       for (let elem in team) {
         this.teams[team[elem].realm] = {
@@ -114,17 +117,13 @@ export class CalendarTableComponent implements OnInit {
   }
 
 // modal window
-  onShow() {
-    const dialogConfig = new MatDialogConfig();
+  onShow(): void {
+    const dialogConfig: MatDialogConfig<any> = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.width = "417px";
+    dialogConfig.height = "397px";
+    dialogConfig.hasBackdrop = false;
     this.dialog.open(ModalComponent, dialogConfig)
   }
-  // get teamsEntity(): Team[] {}
-
-  // monthDaysEntity(): Day[] {}
-
-  // generateMonth(date: Date): Month {} // should to get month
-
-  // you can create the structure yourself too
 }

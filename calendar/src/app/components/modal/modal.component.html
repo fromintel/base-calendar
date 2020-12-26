@@ -1,1 +1,54 @@
-<div class="modal"><p>modal works!</p></div>
+<div class="controls-container">
+  <form class="form-group">
+    <div class="modal-form__column">
+      <div class="modal-form__header">
+        <h3 class="modal-form__title">Vacation Request</h3>
+        <span class="modal-form__vacation">Days</span>
+      </div>
+      <div class="modal-form__body">
+        <p class="modal-form__subtitle">Dates</p>
+        <div class="modal-form__dates">
+          <div class="input-wrapper">
+            <label for="from">From</label>
+            <input
+              class="from form-control"
+              type="date"
+              name="from"
+              [(ngModel)]="from"
+            />
+          </div>
+          <div class="input-wrapper">
+            <label for="to">To</label>
+            <input
+              name="to"
+              type="date"
+              class="to form-control"
+              [(ngModel)]="to"
+            />
+          </div>
+        </div>
+        <p class="modal-form__subtitle">Vac Type</p>
+        <select
+          class="vac-type form-control"
+          name="vacType"
+          [(ngModel)]="vacType"
+        >
+          <option *ngFor="let vacType of vacTypes" [value]="vacType">
+            {{ vacType }}
+          </option>
+        </select>
+      </div>
+      <div class="modal-form__footer form-group">
+        <button class="abort modal-form__btn" (click)="onClose()">
+          Cancel
+        </button>
+        <button
+          class="send modal-form__btn"
+          (click)="onSend(from, to, vacType)"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
