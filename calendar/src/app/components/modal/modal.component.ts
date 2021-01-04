@@ -16,11 +16,11 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {}
 
-  onClose() {
+  onClose(): void {
     this.dialog.closeAll();
   }
 
-  onSend(from, to, vacType) {
+  onSend(from, to, vacType): void {
     this.form = {
       from: from,
       to: to,
