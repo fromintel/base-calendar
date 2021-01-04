@@ -56,10 +56,9 @@
 //   }
 // }
 
-
-          //           this.vacations = {
-          //             startDate: this.members[member].vacations[member].startDate,
-          //             endDate: this.members[member].vacations[member].endDate,
-          //             type: this.members[member].vacations[member].type,
-          //             userId: this.members[member].id,
-          //           };
+//           this.vacations = {
+//             startDate: this.members[member].vacations[member].startDate,
+//             endDate: this.members[member].vacations[member].endDate,
+//             type: this.members[member].vacations[member].type,
+//             userId: this.members[member].id,
+//           };

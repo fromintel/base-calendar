@@ -1,5 +1,5 @@
 export interface Form {
   from: string;
-  to:string;
+  to: string;
   vacType: string;
 }

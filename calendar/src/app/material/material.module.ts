@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import * as Material from "@angular/material"
-import { ModalComponent } from '../components/modal/modal.component';
-import { FormsModule } from '@angular/forms'
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import * as Material from "@angular/material";
+import { ModalComponent } from "../components/modal/modal.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [ModalComponent],
@@ -18,6 +18,6 @@ import { FormsModule } from '@angular/forms'
     Material.MatInputModule,
     Material.MatDialogModule,
     ModalComponent,
-  ]
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

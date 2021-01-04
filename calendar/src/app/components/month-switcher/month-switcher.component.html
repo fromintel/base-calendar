@@ -3,9 +3,10 @@
     <i class="fas fa-arrow-left"></i>
   </button>
 
-  <span class="month-switcher__month">{{dateService.currentDate | async | moment}}</span>
+  <span class="month-switcher__month">{{
+    dateService.currentDate | async | moment
+  }}</span>
   <button class="month-switcher__btn" (click)="switchMonth(1)">
     <i class="fas fa-arrow-right"></i>
   </button>
 </div>
-

@@ -3,7 +3,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { MaterialModule } from "./material/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 
 // components
@@ -31,17 +31,14 @@ import { UserService } from "./services/user.service";
     CalendarFooterComponent,
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [
-    DateService, 
-    UserService, 
-  ],
+  providers: [DateService, UserService],
   bootstrap: [AppComponent],
   entryComponents: [ModalComponent],
 })

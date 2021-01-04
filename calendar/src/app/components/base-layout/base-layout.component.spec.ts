@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BaseLayoutComponent } from './base-layout.component';
+import { BaseLayoutComponent } from "./base-layout.component";
 
-describe('BaseLayoutComponent', () => {
+describe("BaseLayoutComponent", () => {
   let component: BaseLayoutComponent;
   let fixture: ComponentFixture<BaseLayoutComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BaseLayoutComponent ]
-    })
-    .compileComponents();
+      declarations: [BaseLayoutComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('BaseLayoutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -68,7 +68,7 @@ export class CalendarTableComponent implements OnInit {
         .subscribe((vacationArr) => {
           this.sumArray = vacationArr;
         });
-        // subscribe user vacation and make member-vacation sum
+      // subscribe user vacation and make member-vacation sum
       this.getVacationByIdObservable = this.userService
         .getVacationById(this.currentDate)
         .subscribe((vacationIdArr) => {
@@ -78,7 +78,7 @@ export class CalendarTableComponent implements OnInit {
       this.getVacationByIdObservable.unsubscribe();
     });
   }
-  // generation of head tr with weekdays 
+  // generation of head tr with weekdays
   generateHeaderArray(): void {
     for (let index = 0; index < this.daysInMonth; index++) {
       this.days.length = this.daysInMonth;
@@ -98,7 +98,7 @@ export class CalendarTableComponent implements OnInit {
     this.hiddenInfo[someInfo] = !this.hiddenInfo[someInfo];
   }
   // date for percentage
-  getDate(index: number): string{
+  getDate(index: number): string {
     return moment(this.currentDate).format("YYYY-MM") + "-" + index;
   }
 
@@ -116,7 +116,7 @@ export class CalendarTableComponent implements OnInit {
     });
   }
 
-// modal window
+  // modal window
   onShow(): void {
     const dialogConfig: MatDialogConfig<any> = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -124,6 +124,6 @@ export class CalendarTableComponent implements OnInit {
     dialogConfig.width = "417px";
     dialogConfig.height = "397px";
     dialogConfig.hasBackdrop = false;
-    this.dialog.open(ModalComponent, dialogConfig)
+    this.dialog.open(ModalComponent, dialogConfig);
   }
 }

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MonthSwitcherComponent } from './month-switcher.component';
+import { MonthSwitcherComponent } from "./month-switcher.component";
 
-describe('MonthSwitcherComponent', () => {
+describe("MonthSwitcherComponent", () => {
   let component: MonthSwitcherComponent;
   let fixture: ComponentFixture<MonthSwitcherComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MonthSwitcherComponent ]
-    })
-    .compileComponents();
+      declarations: [MonthSwitcherComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('MonthSwitcherComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CalendarFooterComponent } from './calendar-footer.component';
+import { CalendarFooterComponent } from "./calendar-footer.component";
 
-describe('CalendarFooterComponent', () => {
+describe("CalendarFooterComponent", () => {
   let component: CalendarFooterComponent;
   let fixture: ComponentFixture<CalendarFooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CalendarFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [CalendarFooterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CalendarFooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
